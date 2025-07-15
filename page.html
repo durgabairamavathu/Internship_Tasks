@@ -1,46 +1,106 @@
-html code:
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"content="Durga BAI's web development landing page"/>
-  <title>My Landing Page</title>
-  <link rel="stylesheet" href="page.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: #333;
+      width: 21%;
+      padding: 60px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #000;
+    }
+    input[type="text"] {
+      width: 80%;
+      height: 50px;
+      font-size: 40px;
+      margin-bottom: 20px;
+      text-align: right;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+  
+    button {
+      height: 60px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #555;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #777;
+    }
+    .equal {
+      background-color: #ff9500;
+    }
+    .equal:hover {
+      background-color: #e08900;
+    }
+  </style>
 </head>
 <body>
-
-  <header>
-    <h2>Durga Bai</h2>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">contact</a>
-    </nav>
-  </header>
-
-  <div class="container">
-    <h1>Welcome to My Landing Page</h1>
-    <p>my journey to learn web development starts here.</p>
-    <a class="learn-more" href="#">Learn More</a>
-    <h2>About Me in Detail</h2>
-    <p>Hello! I'm Durga Bai, a beginner in Web Development.
-      I m Learning HTML and CSS. My goal is to build 
-      user-friendly websites and web applications.</p>
-    <h3>My Projects</h3>
-    <ul> <li>Landing Page</li>
-    <li>Caluclator</li>
-    <li>Porfolio Website</li></ul>
-    <h4>Contact Me</h4>
-    <p>Phone:9063663839</p>
-    <p>Email:ramavathudurgabai2@gmail.com</p>
-    <h4>About This Page</h4>
-    <p>This landing page is built using basic HTML and CSS. It’s fully responsive and beginner-friendly.</p>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="buttons">
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('/')">/</button>
+      
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('*')">*</button>
+      
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('-')">-</button>
+      
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendValue('+')">+</button>
+      
+      <button class="equal" onclick="calculate()" style="grid-column: span 4;">=</button>
+    </div>
   </div>
 
-  <footer>
-    © 2025 Durga Bai. All rights reserved.
-  </footer>
+  <script>
+    const display = document.getElementById('display');
 
+    function appendValue(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
 </body>
 </html>
